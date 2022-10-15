@@ -9,11 +9,11 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts*' --write"
-
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
@@ -24,6 +24,8 @@
     "cypress": "^10.10.0",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "prettier": "^2.7.1",
