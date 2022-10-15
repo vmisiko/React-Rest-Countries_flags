@@ -7,12 +7,12 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element:  Countries(),
+    element:  <Countries />,
   },
   {
-    path: '/detail',
-    element: CountryDetail(),
-  }
+    path: '/detail/:code',
+    element: <CountryDetail />,
+  },
 ])
   
 
