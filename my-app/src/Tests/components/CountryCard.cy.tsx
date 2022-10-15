@@ -1,8 +1,12 @@
-import CountryCard from "../../Pages/Countries/Components/CountryCard";
+import CountryCard from "../../Pages/Countries/CountryCard";
 
 describe("<CountryCard>", () => {
   beforeEach(() => {
-    cy.mount(<CountryCard />);
+    const country = {
+      name: 'Kenay',
+      population: 200000,
+    }
+    cy.mount(<CountryCard country={country} />);
   });
 
   it('Mounted CountryCard', () => {

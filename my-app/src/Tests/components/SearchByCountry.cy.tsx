@@ -1,8 +1,8 @@
-import SearchByCOuntry from "../../SharedComponents/SearchByCOuntry";
+import SearchByCountry from "../../Pages/Countries/SearchByCountry";
 
 describe("<Header>", () => {
   beforeEach(() => {
-    cy.mount(<SearchByCOuntry />);
+    cy.mount(<SearchByCountry />);
   });
 
   it('Mounted Header', () => {

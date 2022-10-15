@@ -1,4 +1,4 @@
-import SearchByRegion from "../../SharedComponents/SearchByRegiony";
+import SearchByRegion from "../../Pages/Countries/SearchByRegion";
 
 describe("<SearchByRegion>", () => {
   beforeEach(() => {
