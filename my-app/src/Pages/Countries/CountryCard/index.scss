@@ -1,0 +1,48 @@
+.country-card {
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    box-shadow: 0px 8px 16px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  }
+
+  &__image {
+    max-height: 150px;
+
+    img {
+      height: 150px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    } 
+  }
+
+  &__content {
+    padding: 32px 15px;
+
+    .name {
+      display: block;
+      -webkit-line-clamp: none;
+      -webkit-box-orient: none;
+      overflow: visible;
+    }
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        color: black;
+        font-weight: 500px;
+
+        span {
+          color: rgb(70, 69, 69);
+          font-weight: normal;
+        }
+      }
+  
+    }
+  }
+
+}
