@@ -1,0 +1,41 @@
+
+.search-section {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__country {
+    
+  }
+
+  &__region {
+
+  }
+}
+
+.countries {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 48px;
+}
+
+.spinner {  
+  text-align: center;
+  .animate-spin {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 20%;
+    display:block;
+    height: 70px;
+    animation: spin 1s linear infinite;
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
