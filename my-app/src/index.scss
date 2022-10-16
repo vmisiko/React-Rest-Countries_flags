@@ -42,4 +42,24 @@ h1 {
   margin-right: 4rem;
 }
 
+.spinner {  
+  text-align: center;
+  .animate-spin {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 20%;
+    display:block;
+    height: 70px;
+    animation: spin 1s linear infinite;
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
 
