@@ -14,9 +14,10 @@ const Countries = () => {
     getCountries();
   }, []);
 
-  const getCountries = async () => {
+  const getCountries = async (endpoint?: string) => {
     setLoading(true);
-    const response = await fetch("https://restcountries.com/v2/all", {
+    const url = `https://restcountries.com/v2${endpoint ? endpoint : '/all'}`;
+    const response = await fetch(url, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -27,14 +28,24 @@ const Countries = () => {
     setCountries(responsejson);
   }
 
+  const searchByCountry = (name: string) => {
+    const endpoint: string = `/name/${name}/?fullText=true`;
+    getCountries(endpoint);
+  }
+
+  const searchByRegion = (e: any) => {
+    const endpoint = `/region/${e.value}`;
+    getCountries(endpoint);
+  }
+
   return (
     <div className="container">
       <div className="search-section">
         <div className="search-section__country">
-          <SearchByCountry />
+          <SearchByCountry onChange={searchByCountry} />
         </div>
         <div className="search-section__region">
-          <SearchByRegion />
+          <SearchByRegion onChange={searchByRegion} />
         </div>
       </div>
       
@@ -44,9 +55,9 @@ const Countries = () => {
           <div id="countries" className="countries">
             {  
             countries &&
-              countries.map((country, key) => (
-              <Link to={`/detail/${country.alpha2Code}`}>
-                <CountryCard country={country} key={key} />
+              countries?.map((country, key) => (
+              <Link to={`/detail/${country.alpha2Code}`} key={key} >
+                <CountryCard country={country} />
               </Link>
               ))
             }
