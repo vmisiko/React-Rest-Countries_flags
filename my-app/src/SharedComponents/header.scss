@@ -10,3 +10,11 @@
     margin-left: 4rem;
   }
 }
+
+@media (max-width: 375px) {
+  .header {
+    &__title {
+      margin-left: 2rem;
+    }
+  }
+}

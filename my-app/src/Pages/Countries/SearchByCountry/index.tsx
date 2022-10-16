@@ -7,7 +7,7 @@ import AsyncSelect from 'react-select/async';
 
 const customStyles = {
   control: () => ({
-    width: 400,
+    width: '100%',
     padding: '10px 0px',
     borderRadius: '8px',
     boxShadow: '0px 4px 16px 8px rgb(237 237 237)',

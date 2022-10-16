@@ -3,7 +3,7 @@ import Select from 'react-select'
 
 const customStyles = {
   control: () => ({
-    width: 400,
+    width: '100%',
     padding: '10px 0px',
     display: 'flex',
     borderRadius: '8px',
@@ -31,6 +31,7 @@ const searchByRegion = (props: any) => {
     <div>
       <Select
         styles={customStyles}
+        placeholder="Filter by Region"
         defaultValue={selectedOption}
         onChange={onchange}
         options={options}

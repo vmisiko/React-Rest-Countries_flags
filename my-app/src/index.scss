@@ -43,6 +43,13 @@ h1 {
   margin-right: 4rem;
 }
 
+@media (max-width: 375px) {
+  .container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
 .spinner {  
   text-align: center;
   .animate-spin {
@@ -66,6 +73,7 @@ h1 {
 .flex {
   display: flex;
 }
+
 
 
 
