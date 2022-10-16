@@ -1,10 +1,38 @@
 import "./index.scss";
-import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Loader from "../../SharedComponents/Loader";
 
 function CountryDetail() {
 
+  const [ countryDetails, setCountryDetails ] = useState<any>('');
+  const [loading, setLoading] = useState<boolean>(false);
+
   let navigate = useNavigate();
+  let location = useLocation();
+  let { code }= useParams();
+
+
+  useEffect(() => {
+    getCountry();
+  }, [location]);
+
+  const getCountry = async () => {
+    setLoading(true);
+    const res = await fetch(`https://restcountries.com/v2/alpha/${code}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+    });
+    if (res.status === 200) {
+      const response = await res.json();
+      setCountryDetails(response);
+      console.log(countryDetails, response);
+      setLoading(false);
+    }
+    
+  }
   
   return (
     <div className="country-detail container">
@@ -22,72 +50,65 @@ function CountryDetail() {
         <span>Back</span>
       </button>
 
-      <div className="detail-content">
+      { 
+        loading
+        ? <Loader />
+        : <div className="detail-content">
 
-          <div className="detail-content__image">
-            <img id="flag" width="600" height="400" src="https://flagcdn.com/es.svg" alt="" />
-          </div>
-
-          <div className="spacer">
-
-          </div>
-          <div>
-            <h2 className="detail-content__title">
-              Belgium
-            </h2>
-            <div className="detail-content__list">
-              <ol className="list1"> 
-                <h4>Native Name: <span> Belgia</span> </h4>
-                <h4>Population: <span> 10,0000</span> </h4>
-                <h4>Region: <span> Europe</span> </h4>
-                <h4>Sub Region:<span> Western Europe</span> </h4>
-                <h4>Capital: <span> Brussels</span> </h4>
-              </ol>
-
-              <div className="spacer"></div>
-
-              <ol className="list2"> 
-                <h4>Top Level Domain: <span> Belgia</span> </h4>
-                <h4>Currencies: <span> Euro</span> </h4>
-                <h4>Languages: <span> Dutch, French, German</span> </h4>
-              </ol>
+            <div className="detail-content__image">
+              <img id="flag" width="600" height="400" src={countryDetails?.flags?.svg} alt="" />
             </div>
 
+            <div className="spacer">
 
-            <div className="detail-content__footer">
-                <h4>
-                  Border Countries:
-                </h4>
-
-                <div className="buttons">
-                  <Link
-                    id="border1"
-                    to={`/detail/fr`}
-                    className="test"
-                    >
-                      <span>France</span>
-                  </Link>
-
-                  <Link
-                    id="border2"
-                    to={`/detail/GE`}
-                    className="test"
-                    >
-                      <span>Germany</span>
-                  </Link>
-
-                  <Link
-                    id="border3"
-                    to={`/detail/NE`}
-                    className="test"
-                    >
-                      <span>Netherlands</span> 
-                  </Link>
-                </div>
             </div>
+            <div>
+              <h2 className="detail-content__title">
+                { countryDetails?.name }
+              </h2>
+              <div className="detail-content__list">
+                <ol className="list1"> 
+                  <h4>Native Name: <span> { countryDetails?.nativeName }</span> </h4>
+                  <h4>Population: <span> { countryDetails?.population }</span> </h4>
+                  <h4>Region: <span> { countryDetails?.region }</span> </h4>
+                  <h4>Sub Region:<span> { countryDetails?.subregion }</span> </h4>
+                  <h4>Capital: <span> {countryDetails?.capital }</span> </h4>
+                </ol>
 
-          </div>
-      </div>
+                <div className="spacer"></div>
+
+                <ol className="list2"> 
+                  <h4>Top Level Domain: <span> {countryDetails?.topLevelDomain}</span> </h4>
+                  <h4>Currencies: {countryDetails?.currencies?.map((currency: any, key:number) => <span key={key}>{currency.code}</span>  )} </h4>
+                  <h4>Languages: {countryDetails?.languages?.map((language:any, key:number) => <span key={key}>{language.name} </span>  )}</h4>
+                </ol>
+              </div>
+
+
+              <div className="detail-content__footer">
+                  <h4>
+                    Border Countries:
+                  </h4>
+
+                  <div className="buttons">
+                    { 
+                    countryDetails.borders?.map((border: string, key:number) =>
+                      <Link
+                        id={`border${key}`}
+                        to={`/detail/${border}`}
+                        className="test"
+                        key={key}
+                        >
+                          <span>{border}</span>
+                      </Link>
+                      )
+                    }
+                  </div>
+              </div>
+
+            </div>
+        </div>
+        }
     </div>
   )
 };
