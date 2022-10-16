@@ -10,7 +10,6 @@ describe("<Header>", () => {
   });
 
   it('Search country request sent', () => {
-    cy.get("#search").type('kenya{enter}');
-    cy.get('#dropdown').select('Kenya');
+    cy.get("#search-country").type('kenya{enter}');
   });
 });
