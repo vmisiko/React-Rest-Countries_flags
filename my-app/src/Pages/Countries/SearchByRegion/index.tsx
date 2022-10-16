@@ -1,7 +1,40 @@
-function searchByRegion() {
+import { useState } from 'react';
+import Select from 'react-select'
+
+const customStyles = {
+  control: () => ({
+    width: 400,
+    padding: '10px 0px',
+    display: 'flex',
+    borderRadius: '8px',
+    boxShadow: '0px 4px 16px 8px rgb(237 237 237)',
+  }),
+};
+
+const searchByRegion = (props: any) => {
+  const [selectedOption, setSelectedOption] = useState<any>(null);
+
+  const options = [
+    { value: 'Africa', label: 'Africa' },
+    { value: 'America', label: 'America' },
+    { value: 'Asia', label: 'Asia' },
+    { value: 'Europe', label: 'Europe' },
+    { value: 'Oceania', label: 'Oceania' },
+  ];
+
+  const onchange = (e: any) => {
+    setSelectedOption(e);
+    props.onChange(e);
+  }
+
   return (
     <div>
-      <span>Region</span>
+      <Select
+        styles={customStyles}
+        defaultValue={selectedOption}
+        onChange={onchange}
+        options={options}
+      />
     </div>
   )
 };
