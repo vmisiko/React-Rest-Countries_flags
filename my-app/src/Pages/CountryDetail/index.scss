@@ -1,0 +1,126 @@
+
+.country-detail {
+  margin-top: 4rem;
+
+  &__button {
+    display: flex;
+    padding: 8px 20px !important;
+    background-color: white;
+    color: black;
+    border: none; 
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px 4px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+
+    .icon {
+      height: 20px;
+      width: 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    span {
+      margin-left: 8px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+}
+
+.detail-content {
+  margin-top: 4rem;
+  display: flex;
+
+  &__image {
+    height: 400px;    
+  } 
+
+  &__title {
+    margin-top: 2rem;
+    h2 {
+      display: block;
+      -webkit-line-clamp: none;
+      -webkit-box-orient: none;
+      overflow: visible;
+    }
+  }
+
+  .spacer {
+    flex-grow: 1;
+    margin: 4rem;
+  }
+
+  &__list {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    font-size: 16px;
+
+    .list1 {
+      list-style: none;
+      padding-left: 0;
+
+      h4 {
+        color: black;
+        margin: 4px;
+
+        span {
+          color: rgb(70, 69, 69);
+          font-weight: normal;
+        }
+      }
+  
+    }
+
+    .spacer {
+      flex-grow: 1;
+    }
+
+    .list2 {
+      list-style: none;
+      padding-left: 0;
+      margin-left: auto;
+
+      h4 {
+        color: black;
+        margin: 4px;
+
+
+        span {
+          color: rgb(70, 69, 69);
+          font-weight: normal;
+        }
+      }
+  
+    }
+  }
+
+  &__footer {
+    display: flex;
+    margin-top: 4rem;
+    
+    
+    .buttons {
+      margin-left: 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+      
+      .test {
+        height: 40px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        float: right;
+        padding: 0px 15px;
+        width: 90px;
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        margin: 0px 4px;
+        box-shadow: 0px 4px 16px 8px rgb(237 237 237);
+      }
+    }
+    
+  }
+}
+
