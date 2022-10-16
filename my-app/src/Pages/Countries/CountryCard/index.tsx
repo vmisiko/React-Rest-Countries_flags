@@ -8,11 +8,11 @@ function countryCard(props:{country: any}) {
       </div>
       <div className="country-card__content">
         <h2 className="name">
-          {props.country.name.official}
+          {props.country.name}
         </h2>
 
         <ol className="list">
-          <li> Population: <span>{props.country.population}</span></li>
+          <li> Population: <span>{props.country.population.toLocaleString("en-US")}</span></li>
           <li> Region: <span>{props.country.region}</span></li>
           <li> Capital: <span>{props.country?.capital}</span></li>
         </ol>

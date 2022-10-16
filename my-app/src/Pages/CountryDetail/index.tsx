@@ -69,7 +69,7 @@ function CountryDetail() {
               <div className="detail-content__list">
                 <ol className="list1"> 
                   <h4>Native Name: <span> { countryDetails?.nativeName }</span> </h4>
-                  <h4>Population: <span> { countryDetails?.population }</span> </h4>
+                  <h4>Population: <span> { countryDetails?.population?.toLocaleString("en-US")}</span> </h4>
                   <h4>Region: <span> { countryDetails?.region }</span> </h4>
                   <h4>Sub Region:<span> { countryDetails?.subregion }</span> </h4>
                   <h4>Capital: <span> {countryDetails?.capital }</span> </h4>
