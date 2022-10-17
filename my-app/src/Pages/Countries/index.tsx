@@ -6,12 +6,13 @@ import SearchByRegion from "./SearchByRegion";
 import CountryCard from "./CountryCard";
 import './index.scss';
 import Loader from "../../SharedComponents/Loader";
+import useAxiosErrorhandler from "../../hook/useAxiosErrorHandler";
+import { Country } from "../../models/response";
 
 const Countries = () => {
-  const [countries, setCountries] = useState<Array<any>>([]);
+  const [countries, setCountries] = useState<Array<Country>>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [apiError, setAPIError] = useState<any>(null);
-  const [networkError, setNetworkError] = useState<string>('');
+  const { networkError, apiError, handleAxiosError} = useAxiosErrorhandler();
 
   useEffect(() => {
     getCountries();
@@ -29,21 +30,7 @@ const Countries = () => {
       });
       sortCountries(response.data);
     } catch(err: any) {
-      if (err.isAxiosError) {
-        if (err.response) {
-          const error = {
-            message: 'Server Error',
-            data: err.response.data,
-            statusCode: err.response.status
-          };
-          console.log(error);
-          setAPIError(error);
-        } else {
-          const error = 'NetWork Error'
-          console.log(error);
-          setNetworkError(error);
-        }
-      }
+      handleAxiosError(err);
     }
     setLoading(false);
   }
