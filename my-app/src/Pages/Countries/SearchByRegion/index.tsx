@@ -23,13 +23,14 @@ const searchByRegion = (props: any) => {
   ];
 
   const onchange = (e: any) => {
-    setSelectedOption(e);
+    // setSelectedOption(e);
     props.onChange(e);
   }
 
   return (
     <div>
       <Select
+        id="search-region"
         styles={customStyles}
         placeholder="Filter by Region"
         defaultValue={selectedOption}

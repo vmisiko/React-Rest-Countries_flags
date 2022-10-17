@@ -6,7 +6,7 @@ describe("<Header>", () => {
   });
 
   it('Mounted Header', () => {
-    cy.contains('search for a country');
+    cy.contains('Search for a country');
   });
 
   it('Search country request sent', () => {

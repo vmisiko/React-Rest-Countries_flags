@@ -1,216 +1,99 @@
+import { Country } from "../../models/response";
 import CountryCard from "../../Pages/Countries/CountryCard";
 
 describe("<CountryCard>", () => {
   beforeEach(() => {
-    const country ={
-      "name": {
-          "common": "Western Sahara",
-          "official": "Sahrawi Arab Democratic Republic",
-          "nativeName": {
-              "ber": {
-                  "official": "Sahrawi Arab Democratic Republic",
-                  "common": "Western Sahara"
-              },
-              "mey": {
-                  "official": "الجمهورية العربية الصحراوية الديمقراطية",
-                  "common": "الصحراء الغربية"
-              },
-              "spa": {
-                  "official": "República Árabe Saharaui Democrática",
-                  "common": "Sahara Occidental"
-              }
-          }
-      },
-      "tld": [
-          ".eh"
-      ],
-      "cca2": "EH",
-      "ccn3": "732",
-      "cca3": "ESH",
-      "independent": false,
-      "status": "officially-assigned",
-      "unMember": false,
-      "currencies": {
-          "DZD": {
-              "name": "Algerian dinar",
-              "symbol": "دج"
-          },
-          "MAD": {
-              "name": "Moroccan dirham",
-              "symbol": "DH"
-          },
-          "MRU": {
-              "name": "Mauritanian ouguiya",
-              "symbol": "UM"
-          }
-      },
-      "idd": {
-          "root": "+2",
-          "suffixes": [
-              "125288",
-              "125289"
-          ]
-      },
-      "capital": [
-          "El Aaiún"
-      ],
-      "altSpellings": [
-          "EH",
-          "Taneẓroft Tutrimt"
-      ],
-      "region": "Africa",
-      "subregion": "Northern Africa",
-      "languages": {
-          "ber": "Berber",
-          "mey": "Hassaniya",
-          "spa": "Spanish"
-      },
-      "translations": {
-          "ara": {
-              "official": "الجمهورية العربية الصحراوية الديمقراطية",
-              "common": "الصحراء الغربية"
-          },
-          "bre": {
-              "official": "Republik Arab Saharaoui Demokratel",
-              "common": "Sahara ar C'hornôg"
-          },
-          "ces": {
-              "official": "Západní Sahara",
-              "common": "Západní Sahara"
-          },
-          "cym": {
-              "official": "Sahrawi Arab Democratic Republic",
-              "common": "Western Sahara"
-          },
-          "deu": {
-              "official": "Demokratische Arabische Republik Sahara",
-              "common": "Westsahara"
-          },
-          "est": {
-              "official": "Lääne-Sahara",
-              "common": "Lääne-Sahara"
-          },
-          "fin": {
-              "official": "Länsi-Sahara",
-              "common": "Länsi-Sahara"
-          },
-          "fra": {
-              "official": "République arabe sahraouie démocratique",
-              "common": "Sahara Occidental"
-          },
-          "hrv": {
-              "official": "Sahrawi Arab Demokratska Republika",
-              "common": "Zapadna Sahara"
-          },
-          "hun": {
-              "official": "Nyugat-Szahara",
-              "common": "Nyugat-Szahara"
-          },
-          "ita": {
-              "official": "Repubblica Araba Saharawi Democratica",
-              "common": "Sahara Occidentale"
-          },
-          "jpn": {
-              "official": "サハラアラブ民主共和国",
-              "common": "西サハラ"
-          },
-          "kor": {
-              "official": "사하라 아랍 민주 공화국",
-              "common": "서사하라"
-          },
-          "nld": {
-              "official": "Sahrawi Arabische Democratische Republiek",
-              "common": "Westelijke Sahara"
-          },
-          "per": {
-              "official": "صحرای غربی",
-              "common": "صحرای غربی"
-          },
-          "pol": {
-              "official": "Saharyjska Arabska Republika Demokratyczna",
-              "common": "Sahara Zachodnia"
-          },
-          "por": {
-              "official": "República Árabe Saharaui Democrática",
-              "common": "Saara Ocidental"
-          },
-          "rus": {
-              "official": "Sahrawi Арабская Демократическая Республика",
-              "common": "Западная Сахара"
-          },
-          "slk": {
-              "official": "Západná Sahara",
-              "common": "Západná Sahara"
-          },
-          "spa": {
-              "official": "República Árabe Saharaui Democrática",
-              "common": "Sahara Occidental"
-          },
-          "swe": {
-              "official": "Västsahara",
-              "common": "Västsahara"
-          },
-          "tur": {
-              "official": "Sahra Demokratik Arap Cumhuriyeti",
-              "common": "Sahra Demokratik Arap Cumhuriyeti"
-          },
-          "urd": {
-              "official": "صحراوی عرب عوامی جمہوریہ",
-              "common": "مغربی صحارا"
-          },
-          "zho": {
-              "official": "阿拉伯撒哈拉民主共和国",
-              "common": "西撒哈拉"
-          }
-      },
-      "latlng": [
-          24.5,
-          -13
-      ],
-      "landlocked": false,
-      "borders": [
-          "DZA",
-          "MRT",
-          "MAR"
-      ],
-      "area": 266000,
-      "demonyms": {
-          "eng": {
-              "f": "Sahrawi",
-              "m": "Sahrawi"
-          }
-      },
-      "flag": "🇪🇭",
-      "maps": {
-          "googleMaps": "https://goo.gl/maps/7nU3mB69vP6zQp7A8",
-          "openStreetMaps": "https://www.openstreetmap.org/relation/5441968"
-      },
-      "population": 510713,
-      "car": {
-          "signs": [
-              ""
-          ],
-          "side": "right"
-      },
-      "timezones": [
-          "UTC+00:00"
-      ],
-      "continents": [
-          "Africa"
-      ],
-      "flags": {
-          "png": "https://flagcdn.com/w320/eh.png",
-          "svg": "https://flagcdn.com/eh.svg"
-      },
-      "coatOfArms": {},
-      "startOfWeek": "monday",
-      "capitalInfo": {
-          "latlng": [
-              -13.28,
-              27.14
-          ]
-      }
-  }
+    const country: Country ={
+        "name": "Afghanistan",
+        "topLevelDomain": [
+            ".af"
+        ],
+        "alpha2Code": "AF",
+        "alpha3Code": "AFG",
+        "callingCodes": [
+            "93"
+        ],
+        "capital": "Kabul",
+        "altSpellings": [
+            "AF",
+            "Afġānistān"
+        ],
+        "subregion": "Southern Asia",
+        "region": "Asia",
+        "population": 40218234,
+        "latlng": [
+            33,
+            65
+        ],
+        "demonym": "Afghan",
+        "area": 652230,
+        "timezones": [
+            "UTC+04:30"
+        ],
+        "borders": [
+            "IRN",
+            "PAK",
+            "TKM",
+            "UZB",
+            "TJK",
+            "CHN"
+        ],
+        "nativeName": "افغانستان",
+        "numericCode": "004",
+        "flags": {
+            "svg": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
+            "png": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_Taliban.svg/320px-Flag_of_the_Taliban.svg.png"
+        },
+        "currencies": [
+            {
+                "code": "AFN",
+                "name": "Afghan afghani",
+                "symbol": "؋"
+            }
+        ],
+        "languages": [
+            {
+                "iso639_1": "ps",
+                "iso639_2": "pus",
+                "name": "Pashto",
+                "nativeName": "پښتو"
+            },
+            {
+                "iso639_1": "uz",
+                "iso639_2": "uzb",
+                "name": "Uzbek",
+                "nativeName": "Oʻzbek"
+            },
+            {
+                "iso639_1": "tk",
+                "iso639_2": "tuk",
+                "name": "Turkmen",
+                "nativeName": "Türkmen"
+            }
+        ],
+        "translations": {
+            "br": "Afghanistan",
+            "pt": "Afeganistão",
+            "nl": "Afghanistan",
+            "hr": "Afganistan",
+            "fa": "افغانستان",
+            "de": "Afghanistan",
+            "es": "Afganistán",
+            "fr": "Afghanistan",
+            "ja": "アフガニスタン",
+            "it": "Afghanistan",
+            "hu": "Afganisztán"
+        },
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
+        "regionalBlocs": [
+            {
+                "acronym": "SAARC",
+                "name": "South Asian Association for Regional Cooperation"
+            }
+        ],
+        "cioc": "AFG",
+        "independent": true
+    }
     cy.mount(<CountryCard country={country} />);
   });
 

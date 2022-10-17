@@ -8,7 +8,7 @@ function countryCard(props:{country: Country}) {
         <img src={props.country.flags.svg} alt="" />
       </div>
       <div className="country-card__content">
-        <h2 className="name">
+        <h2 id="country-name" className="name">
           {props.country.name}
         </h2>
 

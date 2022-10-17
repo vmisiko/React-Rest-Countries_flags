@@ -2,15 +2,17 @@ import SearchByRegion from "../../Pages/Countries/SearchByRegion";
 
 describe("<SearchByRegion>", () => {
   beforeEach(() => {
-    cy.mount(<SearchByRegion />);
+    cy.mount(<SearchByRegion onChange={change}/>);
+    function change(e: any) {
+      console.log(e);
+    }
   });
 
   it('Mounted SearchByRegion', () => {
-    cy.contains('Filter by region');
+    cy.contains('Filter by Region');
   });
 
   it('Search region request sent', () => {
-    cy.get("#search-region").type('kenya{enter}');
-    cy.get('#dropdown').select('Kenya');
+    cy.get("#search-region").type('Americas{enter}');
   });
 });

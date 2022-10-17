@@ -1,11 +1,13 @@
 import Countries from "../Pages/Countries";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 describe("<Countries>", () => {
   beforeEach(() => {
-    cy.mount(<Countries />);
+    cy.mount(<Router><Countries /> </Router>);
   });
   it('Mounted Countries', () => {
-    cy.contains('countries');
+    cy.contains('Search for a country');
+    cy.contains('Filter by Region');
   });
   it('Fetch all countries', () => {
     cy.request({
@@ -18,21 +20,13 @@ describe("<Countries>", () => {
 
   it('Filter By country', () => {
     const country = 'kenya';
-    cy.request({
-      method: 'GET',
-      url: `https://restcountries.com/v3.1/name/${country}`,
-    }).then(($response) => {
-      expect($response.status).to.eq(200);
-    });
+    cy.get("#search-country").type(`${country}{enter}`);
+    cy.get('#countries').should('be.visible');
   });
 
   it('Filter By Region', () => {
-    const region = "AU"
-    cy.request({
-      method: 'GET',
-      url: `https://restcountries.com/v3.1/regionalbloc/{region}`,
-    }).then(($response) => {
-      expect($response.status).to.eq(200);
-    });
+    const region = "Africa"
+    cy.get("#search-region").type('Americas{enter}');
+    cy.get('#countries').should('be.visible');
   });
 });
