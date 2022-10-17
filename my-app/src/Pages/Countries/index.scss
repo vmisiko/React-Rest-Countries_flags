@@ -1,3 +1,6 @@
+.home-font {
+  font-size: 14px !important;
+}
 
 .search-section {
   margin-top: 2rem;
@@ -34,6 +37,24 @@
   display: grid;
   grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 48px;
+
+}
+
+.no-countries {
+  margin-top: 15%;
+  text-align: center;
+
+  button {
+    height: 40px;
+    padding: 0px 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 4px 16px 8px rgb(237 237 237);
+  }
+
+
 }
 
 .spinner {  
