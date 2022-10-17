@@ -12,9 +12,9 @@ function countryCard(props:{country: any}) {
         </h2>
 
         <ol className="list">
-          <li> Population: <span>{props.country.population.toLocaleString("en-US")}</span></li>
-          <li> Region: <span>{props.country.region}</span></li>
-          <li> Capital: <span>{props.country?.capital}</span></li>
+          <h4> Population: <span>{props.country.population.toLocaleString("en-US")}</span></h4>
+          <h4> Region: <span>{props.country.region}</span></h4>
+          <h4> Capital: <span>{props.country?.capital}</span></h4>
         </ol>
       </div>
     </div>
