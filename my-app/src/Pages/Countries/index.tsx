@@ -8,41 +8,33 @@ import './index.scss';
 import Loader from "../../SharedComponents/Loader";
 import useAxiosErrorhandler from "../../hook/useAxiosErrorHandler";
 import { Country } from "../../models/response";
+import useCountryApi from "../../api/useCountriesAPi";
 
 const Countries = () => {
   const [countries, setCountries] = useState<Array<Country>>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { networkError, apiError, handleAxiosError} = useAxiosErrorhandler();
+  const { getCountries } = useCountryApi();
 
   useEffect(() => {
-    getCountries();
+    fetchCountries();
   }, []);
 
-  const getCountries = async (endpoint?: string) => {
+  const fetchCountries = async (endpoint?: string) => {
     setLoading(true);
     const url = endpoint ? endpoint : '/all';
-    try {
-      const response = await axiosIntance(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          }
-      });
-      sortCountries(response.data);
-    } catch(err: any) {
-      handleAxiosError(err);
-    }
+    const response = await getCountries(url);
+    sortCountries(response)
     setLoading(false);
   }
 
   const searchByCountry = (name: string) => {
     const endpoint: string = `/name/${name}/?fullText=true`;
-    getCountries(endpoint);
+    fetchCountries(endpoint);
   }
 
   const searchByRegion = (e: any) => {
     const endpoint = `/region/${e.value}`;
-    getCountries(endpoint);
+    fetchCountries(endpoint);
   }
 
   const sortCountries =  (data: any) => {
@@ -56,7 +48,7 @@ const Countries = () => {
         <span className="mt-5"> No Countries Found </span>
       </div>
 
-      <button className="mt-5  mx-auto" onClick={() => getCountries()} > Refetch Countries  </button>
+      <button className="mt-5  mx-auto" onClick={() => fetchCountries()} > Refetch Countries  </button>
     </div>
   );
 

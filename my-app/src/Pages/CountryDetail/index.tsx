@@ -2,12 +2,14 @@ import "./index.scss";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from "../../SharedComponents/Loader";
-import axiosIntance from "../../AxiosIntance";
+import { CountryDetails } from "../../models/CountryDetailResponse";
+import useCountryApi from "../../api/useCountriesAPi";
 
 function CountryDetail() {
 
-  const [ countryDetails, setCountryDetails ] = useState<any>('');
+  const [ countryDetails, setCountryDetails ] = useState<CountryDetails>();
   const [loading, setLoading] = useState<boolean>(false);
+  const { getCountry } = useCountryApi();
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -15,19 +17,13 @@ function CountryDetail() {
 
 
   useEffect(() => {
-    getCountry();
+    fetchCountry();
   }, [location]);
 
-  const getCountry = async () => {
+  const fetchCountry = async () => {
     setLoading(true);
-    const res = await axiosIntance(`/alpha/${code}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-    });
-    setCountryDetails(res.data);
-    console.log(countryDetails, res);
+    const res = await getCountry(`${code}`);
+    setCountryDetails(res);
     setLoading(false);
   }
   
@@ -89,7 +85,7 @@ function CountryDetail() {
 
                   <div className="buttons">
                     { 
-                    countryDetails.borders?.map((border: string, key:number) =>
+                    countryDetails?.borders?.map((border: string, key:number) =>
                       <Link
                         id={`border${key}`}
                         to={`/detail/${border}`}
