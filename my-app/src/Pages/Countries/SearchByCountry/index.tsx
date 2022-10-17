@@ -5,11 +5,11 @@ import AsyncSelect from 'react-select/async';
 import axiosIntance from '../../../AxiosIntance';
 
 
-
 const customStyles = {
   control: () => ({
     width: '100%',
-    padding: '10px 0px',
+    padding: '10px 30px',
+    display: 'flex',
     borderRadius: '8px',
     boxShadow: '0px 4px 16px 8px rgb(237 237 237)',
   }),
@@ -39,12 +39,16 @@ function searchByCountry(props: any) {
   }
 
   return (
-    <div>
+    <div style={{
+      position: 'relative',
+      display: 'flex'
+
+    }}>
+      <Control/>
       <AsyncSelect
         id="search-country"
-        placeholder="search for a country"
+        placeholder="Search for a country"
         styles={customStyles}
-        components={{Control}}
         cacheOptions
         loadOptions={loadOptions}
         defaultValue={selectedOption}
