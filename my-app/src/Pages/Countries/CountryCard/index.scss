@@ -15,6 +15,7 @@
       width: 100%;
       object-fit: cover;
       object-position: center;
+      border-radius: 4px;
     } 
   }
 
@@ -32,9 +33,10 @@
       list-style: none;
       padding-left: 0;
 
-      li {
+      h4 {
         color: black;
         font-weight: 500px;
+        margin: 4px;
 
         span {
           color: rgb(70, 69, 69);
