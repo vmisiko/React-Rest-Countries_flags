@@ -1,0 +1,12 @@
+
+.btn {
+  height: 40px;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 4px 16px 8px rgb(237 237 237);
+}

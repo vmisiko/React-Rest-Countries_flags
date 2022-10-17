@@ -1,4 +1,4 @@
-import App from './App';
+import App from '../App';
 
 describe('<APP>', () => {
   it('Mount app component', () => {
