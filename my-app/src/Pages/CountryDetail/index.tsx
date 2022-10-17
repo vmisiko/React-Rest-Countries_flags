@@ -2,6 +2,7 @@ import "./index.scss";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from "../../SharedComponents/Loader";
+import axiosIntance from "../../AxiosIntance";
 
 function CountryDetail() {
 
@@ -19,19 +20,15 @@ function CountryDetail() {
 
   const getCountry = async () => {
     setLoading(true);
-    const res = await fetch(`https://restcountries.com/v2/alpha/${code}`, {
+    const res = await axiosIntance(`/alpha/${code}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
         }
     });
-    if (res.status === 200) {
-      const response = await res.json();
-      setCountryDetails(response);
-      console.log(countryDetails, response);
-      setLoading(false);
-    }
-    
+    setCountryDetails(res.data);
+    console.log(countryDetails, res);
+    setLoading(false);
   }
   
   return (

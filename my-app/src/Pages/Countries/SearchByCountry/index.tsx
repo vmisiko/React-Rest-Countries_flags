@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Select from 'react-select';
 import Control from './Control';
 import AsyncSelect from 'react-select/async';
+import axiosIntance from '../../../AxiosIntance';
 
 
 
@@ -20,18 +21,16 @@ function searchByCountry(props: any) {
   const loadOptions =  async (
     inputValue: string,
     ) => new Promise<any[]>((resolve) => {
-    fetch(`https://restcountries.com/v2/name/${inputValue}`,
+    axiosIntance(`/name/${inputValue}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
         }
       })
-      .then(res=> res.json())
       .then(
-        (result) => resolve(result),
-        (error) => resolve([])
-    );
+        (result) => resolve(result.data),
+      )
   });
 
   const onchange = (e: any) => {
