@@ -1,6 +1,7 @@
+import { Country } from '../../../models/response';
 import './index.scss';
 
-function countryCard(props:{country: any}) {
+function countryCard(props:{country: Country}) {
   return (
     <div id="card" className="country-card">
       <div className="country-card__image">
@@ -14,7 +15,7 @@ function countryCard(props:{country: any}) {
         <ol className="list">
           <h4> Population: <span>{props.country.population.toLocaleString("en-US")}</span></h4>
           <h4> Region: <span>{props.country.region}</span></h4>
-          <h4> Capital: <span>{props.country?.capital}</span></h4>
+          <h4> Capital: <span>{props.country.capital}</span></h4>
         </ol>
       </div>
     </div>
