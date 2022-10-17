@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axiosIntance from "../../AxiosIntance";
 import SearchByCountry from "./SearchByCountry";
 import SearchByRegion from "./SearchByRegion";
 import CountryCard from "./CountryCard";
 import './index.scss';
 import Loader from "../../SharedComponents/Loader";
-import useAxiosErrorhandler from "../../hook/useAxiosErrorHandler";
 import { Country } from "../../models/response";
 import useCountryApi from "../../api/useCountriesAPi";
 
