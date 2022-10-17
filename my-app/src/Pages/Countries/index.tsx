@@ -24,10 +24,10 @@ const Countries = () => {
       const response = await axiosIntance(url, {
           method: "GET",
           headers: {
-              "Content-Type": "application/json"
+            "Content-Type": "application/json"
           }
       });
-      setCountries(response.data);
+      sortCountries(response.data);
     } catch(err: any) {
       if (err.isAxiosError) {
         if (err.response) {
@@ -58,30 +58,35 @@ const Countries = () => {
     getCountries(endpoint);
   }
 
-  if (apiError) {
-    return (
-      <div className="container text-center pt-20">
-        <div className="mt-5"> 
-          <span className="mt-5"> {apiError.statusCode} Error </span>
-        </div>
-
-        <button className="mt-5"> Reload page</button>
-      </div>
-    )
+  const sortCountries =  (data: any) => {
+    const response = data.sort(function(a: any, b: any){return b.population - a.population});
+    setCountries(response);
   }
 
-  if (networkError) {
-    return (
-      <div className="container text-center pt-20">
-        <span className="mt-5"> Newwork Error </span>
-
-        <button className=""> Reload page</button>
+  const noCountries = (
+    <div className="no-countries text">
+      <div className="mt-5 text-center  mx-auto"> 
+        <span className="mt-5"> No Countries Found </span>
       </div>
-    )
-  }
+
+      <button className="mt-5  mx-auto" onClick={() => getCountries()} > Refetch Countries  </button>
+    </div>
+  );
+
+  const loadedCountries = countries ? (
+    <div id="countries" className="countries">
+        {  
+          countries?.map((country, key) => (
+          <Link to={`/detail/${country.alpha2Code}`} key={key} >
+            <CountryCard country={country} />
+          </Link>
+          ))
+        }
+    </div>
+      ) : noCountries;
 
   return (
-    <div className="container">
+    <div className="container home-font">
       <div className="search-section">
         <div className="search-section__country">
           <SearchByCountry onChange={searchByCountry} />
@@ -90,21 +95,7 @@ const Countries = () => {
           <SearchByRegion onChange={searchByRegion} />
         </div>
       </div>
-      
-        { loading  ?
-          <Loader />
-          : 
-          <div id="countries" className="countries">
-            {  
-            countries &&
-              countries?.map((country, key) => (
-              <Link to={`/detail/${country.alpha2Code}`} key={key} >
-                <CountryCard country={country} />
-              </Link>
-              ))
-            }
-          </div>
-        }
+        { loading  ? <Loader /> : loadedCountries }
     </div>
   )
 };
