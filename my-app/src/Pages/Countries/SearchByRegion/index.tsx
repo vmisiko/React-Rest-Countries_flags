@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Select from 'react-select'
+import { Continent } from '../../../models/utility';
 
 const customStyles = {
   control: () => ({
@@ -11,7 +12,7 @@ const customStyles = {
   }),
 };
 
-const searchByRegion = (props: any) => {
+const searchByRegion = (props: {onChange:(country: Continent) => void;}) => {
   const [selectedOption, setSelectedOption] = useState<any>(null);
 
   const options = [
@@ -22,7 +23,7 @@ const searchByRegion = (props: any) => {
     { value: 'Oceania', label: 'Oceania' },
   ];
 
-  const onchange = (e: any) => {
+  const onchange = (e: Continent) => {
     props.onChange(e);
   }
 

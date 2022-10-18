@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Control from './Control';
 import AsyncSelect from 'react-select/async';
 import axiosIntance from '../../../AxiosIntance';
+import { CountryDetails } from '../../../models/CountryDetailResponse';
 
 
 const customStyles = {
@@ -14,12 +15,12 @@ const customStyles = {
   }),
 };
 
-function searchByCountry(props: any) {
+function searchByCountry(props: {onChange:(country: string) => void;}) {
   const [selectedOption, setSelectedOption] = useState<any>(null);
 
   const loadOptions =  async (
     inputValue: string,
-    ) => new Promise<any[]>((resolve) => {
+    ) => new Promise<CountryDetails[]>((resolve) => {
     axiosIntance(`/name/${inputValue}`,
       {
         method: "GET",
@@ -32,7 +33,7 @@ function searchByCountry(props: any) {
       )
   });
 
-  const onchange = (e: any) => {
+  const onchange = (e: CountryDetails) => {
     props.onChange(e.name);
     setSelectedOption(e);
   }

@@ -1,21 +1,17 @@
+import { AxiosError } from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function  useAxiosErrorhandler() {
 
-  const [apiError , setApiError] = useState<any>(null);
-  const [networkError , setNetworkError] = useState<any>(null);
+  const [apiError , setApiError] = useState<string>('');
+  const [networkError , setNetworkError] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleAxiosError = (err: any) => {
+  const handleAxiosError = (err: AxiosError) => {
     if (err.isAxiosError) {
       if (err.response) {
-        const error = {
-          message: 'Server Error',
-          data: err.response.data,
-          statusCode: err.response.status
-        };
-        setApiError(error);
+        setApiError('ServerError')
         navigate(`/error/${err.response.status}/ServerError`);
       } else {
         const error = 'NetWork Error'

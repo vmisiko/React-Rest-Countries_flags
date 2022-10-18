@@ -1,6 +1,6 @@
 import useAxiosErrorhandler from "../hook/useAxiosErrorHandler";
 import axiosIntance from "../AxiosIntance";
-import { CountryDetails } from "../models/CountryDetailResponse";
+import { AxiosError } from "axios";
 
 const useCountryApi = () => {
 
@@ -15,7 +15,7 @@ const useCountryApi = () => {
           }
       });
       return response.data;
-    } catch(err: any) {
+    } catch(err: AxiosError | any) {
       handleAxiosError(err);
     }
   }
@@ -30,7 +30,7 @@ const useCountryApi = () => {
       });
 
       return res.data;
-    } catch(err) {
+    } catch(err: AxiosError | any) {
       handleAxiosError(err);
     }
   }

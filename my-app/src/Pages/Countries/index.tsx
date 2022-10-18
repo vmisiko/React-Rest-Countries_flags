@@ -7,6 +7,7 @@ import './index.scss';
 import Loader from "../../SharedComponents/Loader";
 import { Country } from "../../models/response";
 import useCountryApi from "../../api/useCountriesAPi";
+import { Continent } from "../../models/utility";
 
 const Countries = () => {
   const [countries, setCountries] = useState<Array<Country>>([]);
@@ -30,13 +31,13 @@ const Countries = () => {
     fetchCountries(endpoint);
   }
 
-  const searchByRegion = (e: any) => {
+  const searchByRegion = (e: Continent) => {
     const endpoint = `/region/${e.value}`;
     fetchCountries(endpoint);
   }
 
-  const sortCountries =  (data: any) => {
-    const response = data.sort(function(a: any, b: any){return b.population - a.population});
+  const sortCountries =  (data: Country[]) => {
+    const response = data.sort(function(a: Country, b: Country){return b.population - a.population});
     setCountries(response);
   }
 

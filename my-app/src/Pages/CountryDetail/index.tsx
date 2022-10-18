@@ -2,7 +2,7 @@ import "./index.scss";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from "../../SharedComponents/Loader";
-import { CountryDetails } from "../../models/CountryDetailResponse";
+import { CountryDetails, Currency, Language } from "../../models/CountryDetailResponse";
 import useCountryApi from "../../api/useCountriesAPi";
 
 function CountryDetail() {
@@ -72,8 +72,8 @@ function CountryDetail() {
 
                 <ol className="list2"> 
                   <h4>Top Level Domain: <span> {countryDetails?.topLevelDomain}</span> </h4>
-                  <h4>Currencies: {countryDetails?.currencies?.map((currency: any, key:number) => <span key={key}>{currency.code}</span>  )} </h4>
-                  <h4>Languages: {countryDetails?.languages?.map((language:any, key:number) => <span key={key}>{language.name} </span>  )}</h4>
+                  <h4>Currencies: {countryDetails?.currencies?.map((currency: Currency, key:number) => <span key={key}>{currency.code}</span>  )} </h4>
+                  <h4>Languages: {countryDetails?.languages?.map((language:Language, key:number) => <span key={key}>{language.name} </span>  )}</h4>
                 </ol>
               </div>
 
