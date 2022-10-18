@@ -4,6 +4,8 @@
 
 .search-section {
   margin-top: 2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
   display: flex;
   justify-content: space-between;
 
@@ -20,6 +22,9 @@
   .search-section  {
     display: flex;
     flex-direction: column;
+    
+    margin-left: 1rem;
+    margin-right: 1rem;
 
     &__country {
       width: 100%;

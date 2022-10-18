@@ -64,7 +64,7 @@ const Countries = () => {
       ) : noCountries;
 
   return (
-    <div className="container home-font">
+    <div className="home-font">
       <div className="search-section">
         <div className="search-section__country">
           <SearchByCountry onChange={searchByCountry} />
@@ -73,7 +73,9 @@ const Countries = () => {
           <SearchByRegion onChange={searchByRegion} />
         </div>
       </div>
+      <div className="container">
         { loading  ? <Loader /> : loadedCountries }
+      </div>
     </div>
   )
 };

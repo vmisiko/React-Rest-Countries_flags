@@ -4,11 +4,10 @@ import AsyncSelect from 'react-select/async';
 import axiosIntance from '../../../AxiosIntance';
 import { CountryDetails } from '../../../models/CountryDetailResponse';
 
-
 const customStyles = {
   control: () => ({
     width: '100%',
-    padding: '10px 30px',
+    padding: '10px 38px',
     display: 'flex',
     borderRadius: '8px',
     boxShadow: '0px 4px 16px 8px rgb(237 237 237)',
