@@ -15,7 +15,7 @@ function ErrorPage() {
         </div>
 
         <div className="mt-5">
-          <h1> {code} Error</h1>
+          <h1> {code || 'Weird'} Error</h1>
         </div>
 
 
