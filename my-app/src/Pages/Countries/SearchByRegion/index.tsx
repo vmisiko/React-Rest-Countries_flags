@@ -23,7 +23,6 @@ const searchByRegion = (props: any) => {
   ];
 
   const onchange = (e: any) => {
-    // setSelectedOption(e);
     props.onChange(e);
   }
 

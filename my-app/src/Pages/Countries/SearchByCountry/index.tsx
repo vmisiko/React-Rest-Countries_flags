@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Select from 'react-select';
 import Control from './Control';
 import AsyncSelect from 'react-select/async';
 import axiosIntance from '../../../AxiosIntance';
@@ -42,7 +41,6 @@ function searchByCountry(props: any) {
     <div style={{
       position: 'relative',
       display: 'flex'
-
     }}>
       <Control/>
       <AsyncSelect
