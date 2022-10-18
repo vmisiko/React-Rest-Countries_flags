@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './index.css';
 
 function ErrorPage() {
-
+  let { code } = useParams();
+  
   return (
     <div className="container text-center">
 
@@ -14,12 +15,14 @@ function ErrorPage() {
         </div>
 
         <div className="mt-5">
-          <h1> 404 Error</h1>
+          <h1> {code} Error</h1>
         </div>
 
 
         <div className="mt-5">
-          <span>Sorry, the results could not be found</span>
+          { code && code === '404'  ? <span>Sorry, the results could not be found</span> : "" }
+          { code && code === '500'  ? <span>Server Error</span> : "" }
+          { code && code === 'Network'  ? <span>Sorry, your Network is Unstable, kindly check your internet</span> : "" }
         </div>
 
         <div className="text-center mx-auto flex">

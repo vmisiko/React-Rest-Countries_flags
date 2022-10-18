@@ -16,10 +16,10 @@ function  useAxiosErrorhandler() {
           statusCode: err.response.status
         };
         setApiError(error);
-        navigate('/error');
+        navigate(`/error/${err.response.status}/ServerError`);
       } else {
         const error = 'NetWork Error'
-        navigate('/error');
+        navigate(`/error/Network/NetworkError`);
         setNetworkError(error);
       }
     }

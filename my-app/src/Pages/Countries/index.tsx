@@ -21,7 +21,7 @@ const Countries = () => {
     setLoading(true);
     const url = endpoint ? endpoint : '/all';
     const response = await getCountries(url);
-    sortCountries(response)
+    response ? sortCountries(response) : '';
     setLoading(false);
   }
 
