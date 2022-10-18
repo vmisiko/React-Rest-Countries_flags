@@ -129,7 +129,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 375px) {
 
   .country-detail {
     margin-top: 2rem;
@@ -137,6 +137,7 @@
   .detail-content {
     flex-direction: column;
     margin-top: 0rem;
+    margin-bottom: 2rem;
 
     &__image {
       margin-top: 2rem;
@@ -178,6 +179,7 @@
         .test {
           float: none;
           margin-left: 0px;
+          width: auto;
         }
       }
     }
